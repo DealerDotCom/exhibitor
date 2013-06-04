@@ -17,7 +17,7 @@
 package com.netflix.exhibitor.core.automanage;
 
 import com.google.common.io.Closeables;
-import com.netflix.curator.test.InstanceSpec;
+import org.apache.curator.test.InstanceSpec;
 import com.netflix.exhibitor.core.RemoteConnectionConfiguration;
 import org.testng.Assert;
 import org.testng.annotations.Test;
