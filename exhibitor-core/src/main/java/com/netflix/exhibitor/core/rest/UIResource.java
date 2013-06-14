@@ -94,6 +94,10 @@ public class UIResource
         {
             contentType = "text/css";  // not in default mime types
         }
+		else if ( resourceFile.endsWith(".html")) 
+		{
+			contentType = "text/html";
+		}
         else
         {
             contentType = MimetypesFileTypeMap.getDefaultFileTypeMap().getContentType(resourceFile);

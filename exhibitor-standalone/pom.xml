@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>exhibitor</groupId>
-    <artifactId>exhibitor-standalone</artifactId>
-	<packaging>jar</packaging>
-    <version>1.4.7</version>
+    <groupId>exhibitor-war</groupId>
+    <artifactId>exhibitor-war</artifactId>
+    <version>1.0</version>
 
 	<properties>
 		<curator.version>2.0.0-incubating</curator.version>
@@ -83,17 +82,13 @@
     <build>
         <plugins>
             <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.3</version>
                 <configuration>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                    <archive>
-                        <manifest>
-                            <mainClass>com.netflix.exhibitor.application.ExhibitorMain</mainClass>
-                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                        </manifest>
-                    </archive>
+					<packagingExcludes>WEB-INF/classes/buildscripts/*, WEB-INF/classes/WEB-INF/*</packagingExcludes>
+					<warName>ROOT</warName>
+					<webXml>src/main/resources/WEB-INF/web.xml</webXml>
                 </configuration>
             </plugin>
         </plugins>
