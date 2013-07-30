@@ -31,4 +31,23 @@
         <servlet-name>Jersey REST Service</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>A Protected Page</web-resource-name>
+			<url-pattern>/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>manager</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-role>
+		<role-name>manager</role-name>
+	</security-role>
+
+	<login-config>
+		<auth-method>BASIC</auth-method>
+		<realm-name>exhibitorRealm</realm-name>
+	</login-config>
 </web-app>
