@@ -8,6 +8,7 @@
 
 	<properties>
 		<curator.version>2.0.0-incubating</curator.version>
+		<tomcat.port>9495</tomcat.port>
 	</properties>
 	
     <dependencies>
@@ -56,6 +57,12 @@
             <groupId>org.mortbay.jetty</groupId>
             <artifactId>jetty</artifactId>
             <version>6.1.22</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.mortbay.jetty</groupId>
+					<artifactId>servlet-api</artifactId>
+				</exclusion>
+			</exclusions>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -92,6 +99,27 @@
 					<webXml>src/main/resources/WEB-INF/web.xml</webXml>
                 </configuration>
             </plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat6-maven-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<port>${tomcat.port}</port>
+					<path>/</path>
+					<systemProperties>
+						<exhibitor--remoteauth>basic:admin</exhibitor--remoteauth>
+					</systemProperties>
+					<tomcatUsers>src/test/resources/tomcat-users.xml</tomcatUsers>
+					<warSourceDirectory>src/main/resources</warSourceDirectory>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.codehaus.plexus</groupId>
+						<artifactId>plexus-interpolation</artifactId>
+						<version>1.16</version>
+					</dependency>
+				</dependencies>
+			</plugin>
         </plugins>
     </build>
 </project>
