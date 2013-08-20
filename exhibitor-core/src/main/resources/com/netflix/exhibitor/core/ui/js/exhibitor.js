@@ -136,7 +136,7 @@ function updateState()
             if ( !connectedToExhibitor )
             {
                 connectedToExhibitor = true;
-                messageDialog("", "Connection with the " + $('#app-name').html() + " server re-established.");
+                $("#message-dialog").dialog("close");
             }
 
             if ( systemState.backupActive )
